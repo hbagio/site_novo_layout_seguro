@@ -148,12 +148,13 @@ function rotasUsuario()
 
 function rotasPessoa()
 {
-    Route::get('/events/consultaPessoas', [PessoaController::class, 'consultaPessoas'])->name('gerenciamento.pessoa');
+    Route::get('/events/consultaPessoas', [PessoaController::class, 'consultaPessoas'])->name('gerenciamento.consulta_pessoa');
     Route::get('/events/cadastrarPessoas', [PessoaController::class, 'cadastrarPessoas'])->name('gerenciamento.cadastrar_pessoa');
     Route::post('/events/incluirPessoas', [PessoaController::class, 'incluirPessoas'])->name('gerenciamento.incluir_pessoa');
     Route::get('/events/alterar/{id}', [PessoaController::class, 'alterar'])->name('gerenciamento.pessoa.altera');
     Route::get('/events/excluirPessoa/{id}', [PessoaController::class, 'delete'])->name('gerenciamento.pessoa.deleta');
     Route::post('/events/updatePessoa/', [PessoaController::class, 'update'])->name('gerenciamento.pessoa.update');
+    Route::get('/events/pesquisaPessoaFiltro/', [PessoaController::class, 'pesquisaPessoaFiltro'])->name('gerenciamento.pessoa.pesquisa_pessoa_filtro');
     //Route::get('/events/alterarUsuario/{id}', [UserController::class, 'alterarUsuario'])->name('gerenciamento.usuario.formulario.altera');
     //Route::get('/inserirUsuario', [UserController::class, 'inserirUsuario'])->name('gerenciamento.usuario.formulario.insere');
 }

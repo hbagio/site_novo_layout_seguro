@@ -32,12 +32,12 @@
                             @endif
 
                             <td>
-                                <div class="flex_col">
+
                                     <a class="lista_consulta_acao editar" href="/events/alterarProduto/{{ $produto->id }}"
-                                        role="button">Editar <i class="fa-solid fa-pen"></i></a>
+                                        role="button"> <i class="fa-solid fa-pen"></i></a>
                                     <a class="lista_consulta_acao excluir" href="/events/excluirProduto/{{ $produto->id }}"
-                                        role="button">Excluir <i class="fa-solid fa-trash"></i></a>
-                                </div>
+                                        role="button"> <i class="fa-solid fa-trash"></i></a>
+                        
                             </td>
                         </tr>
                     @endforeach

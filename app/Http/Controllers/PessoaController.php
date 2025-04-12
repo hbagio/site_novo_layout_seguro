@@ -22,11 +22,15 @@ class PessoaController extends Controller
 
         return view('events.cadastroPessoa');
     }
+    public function pesquisaPessoaFiltro(){
+        echo('Tetse');
+
+    }
 
     public function update(Request $request)
     {
         echo($request->codigo);
-        
+
         $pessoa = Pessoa::findOrFail($request->codigo);
         echo($request->codigo);
         $pessoa->nome = $request->nome;
@@ -78,7 +82,7 @@ class PessoaController extends Controller
 
         $pessoa =  Pessoa::findOrFail($id);
 
-        
+
 
         return view('events/alterarPessoa', ['pessoa' => $pessoa]);
     }

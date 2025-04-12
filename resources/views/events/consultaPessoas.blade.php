@@ -6,16 +6,31 @@
             <h1 class="titulo_grande cor_escuro_50">Clientes</h1><br>
             <div class="card flex_col">
                 <div class="flex_row col_12">
-                    <div class="container_campo col_8">
+                    <div class="container_campo col_4">
+                        <label class="campo_label col_5">Pesquisar por:</label>
                         <div class="campo">
-                            <input type="text" name="filtro_pesquisa" id="filtro_pesquisa" placeholder="pesquisar cliente">
+                            <select name="tipo" style="text-align: left" required>
+                                <option value="0"> Nome</option>
+                                <option value="1"> Cpf/Cnpj</option>
+                            </select>
+
                         </div>
-                        <button type="submit" class="campo_acao" ><i class="fa-solid fa-magnifying-glass"></i></button>
-                   </div>
+                    </div>
+                    <div class="container_campo col_6">
+                        <div class="campo">
+                            <input type="text" name="filtro_pesquisa" id="filtro_pesquisa"
+                                placeholder="pesquisar cliente">
+                        </div>
+                        <a href="/events/pesquisaPessoaFiltro/" class="card_acao muted col_3"><i class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                    <div class="flex_row col_1">
+                    </div>
                     <a href="cadastrarPessoas" class="card_acao  col_2">Cadastrar Cliente</a>
+                    <div class="flex_row col_1">
+                    </div>
                     <a href="/events/gerenciamento" class="card_acao muted col_2" style="margin-right:5px">Voltar</a>
                 </div>
-               
+
                 <br>
                 <table class="lista_consulta">
                     <tr>
@@ -23,11 +38,11 @@
                         <th>Nome</th>
                         <th>Tipo</th>
                         <th>Cpf/Cnpj</th>
-                       {{-- <th>Endereço</th>
+                        {{-- <th>Endereço</th>
                         <th>Bairro</th>
                         <th>Cidade</th>
                         <th>Estado</th>
-                        <th>Cep</th>--}}
+                        <th>Cep</th> --}}
                         <th>Telefone</th>
                         <th>E-mail</th>
                         <th>Ações</th>
@@ -41,24 +56,24 @@
                             @else
                                 <td>Juridica</td>
                             @endif
-                            <td> {{ $pessoa->cpfcnpj}} </td>
-                           {{-- <td> {{ $pessoa->endereco}} </td>
+                            <td> {{ $pessoa->cpfcnpj }} </td>
+                            {{-- <td> {{ $pessoa->endereco}} </td>
                             <td> {{ $pessoa->bairro}} </td>
                             <td> {{ $pessoa->cidade}} </td>
                             <td> {{ $pessoa->estado}} </td>
-                            <td> {{ $pessoa->cep}} </td>--}}
-                            <td> {{ $pessoa->telefone}} </td>
-                            <td> {{ $pessoa->email}} </td>
+                            <td> {{ $pessoa->cep}} </td> --}}
+                            <td> {{ $pessoa->telefone }} </td>
+                            <td> {{ $pessoa->email }} </td>
                             <td>
-                                
-                                     <a class="lista_consulta_acao editar" href="/events/alterar/{{$pessoa->id }}"
-                                        role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
-                                    <a class="lista_consulta_acao editar" href="/events/alterar/{{$pessoa->id }}"
-                                        role="button"> <i class="fa-solid fa-pen"></i></a>
-                                    <a class="lista_consulta_acao excluir" href="/events/excluirPessoa/{{ $pessoa->id }}"
-                                        role="button"> <i class="fa-solid fa-trash"></i></a>
-                                        
-                                
+
+                                <a class="lista_consulta_acao editar" href="/events/alterar/{{ $pessoa->id }}"
+                                    role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                <a class="lista_consulta_acao editar" href="/events/alterar/{{ $pessoa->id }}"
+                                    role="button"> <i class="fa-solid fa-pen"></i></a>
+                                <a class="lista_consulta_acao excluir" href="/events/excluirPessoa/{{ $pessoa->id }}"
+                                    role="button"> <i class="fa-solid fa-trash"></i></a>
+
+
                             </td>
                         </tr>
                     @endforeach
@@ -70,4 +85,3 @@
         </div>
     </section>
 @endsection
-
