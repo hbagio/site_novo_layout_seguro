@@ -1,6 +1,6 @@
 <header class="col_12">
         <div class="container">
-            @include('/components/logo', ['firstName' => 'Remédio', 'secondName' => 'Fácil', 'cssClass' => 'col_6'])
+            @include('/components/logo', ['firstName' => 'Bagio', 'secondName' => 'Seguros', 'cssClass' => 'col_6'])
             <nav id="menu_navegacao_mobile" class="col_7 menu_fechado">
 
                 <a class="centralize_item col_3 {{ !request()->routeIs('home*') ?: 'ativo'}}" href="{{ route('home') }}">

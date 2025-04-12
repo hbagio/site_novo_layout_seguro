@@ -43,7 +43,7 @@ body {
 :root {
     --cor_base: #f6f6f6;
     --cor_branco: #ffffff;
-    --cor_primaria_rgb: 143, 22, 186; /* Alterar cor primária, colocar o código RGB aqui*/
+    --cor_primaria_rgb: 91, 130, 238; /* Alterar cor primária, colocar o código RGB aqui*/
     --cor_primaria: rgba(var(--cor_primaria_rgb));
     --cor_primaria_50: rgba(var(--cor_primaria_rgb),.5);
     --cor_primaria_25:rgba(var(--cor_primaria_rgb),.25);

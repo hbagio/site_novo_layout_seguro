@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Fazendo Festa | Home')
+@section('title', 'Bagio Seguros | Home')
 @section('content')
     <section class="galeria">
         @include('/components/toolbar')

@@ -49,8 +49,8 @@
     background: rgba(var(--cor_primaria_rgb),.1);
     width: var(--perc_full);
     border-radius: 5px;
-    height: 60px;
-    line-height: 60px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
     color: var(--cor_primaria);
     font-weight: bold

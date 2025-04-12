@@ -12,7 +12,7 @@ class PessoaController extends Controller
     public function consultaPessoas()
     {
 
-        $pessoas = DB::table('pessoas')->orderBy('id', 'asc')->simplePaginate(20);
+        $pessoas = DB::table('pessoas')->orderBy('id', 'asc')->simplePaginate(15);
 
         return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
     }
