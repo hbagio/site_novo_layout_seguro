@@ -29,10 +29,10 @@
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->descricao }}</td>
                     <td>
-                        <div class="flex_col">
+                        
                             <a class="lista_consulta_acao editar" href="/events/alterarCategoria/{{ $categoria->id }}">Editar <i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="lista_consulta_acao excluir" href="/events/excluirCategoria/{{ $categoria->id }}">Excluir <i class="fa-solid fa-trash"></i></a>
-                        </div>
+
                     </td>
                 </tr>
                 @endforeach

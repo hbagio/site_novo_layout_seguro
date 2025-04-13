@@ -42,7 +42,7 @@
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Cep</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="cep" id="cep" required placeholder="Cep da Pessoa">
+                        <input type="text" class="form-control"name="cep" id="cep" required placeholder="Cep da Pessoa formato 99999-99" maxlength="9" minlength="9">
                     </div>
                 </div>
                 <br>

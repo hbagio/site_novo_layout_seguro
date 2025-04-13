@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Pessoa;
 use Illuminate\Support\Facades\DB;
 
+const  REGISTROS_POR_PAGINA = 12;
+
 class PessoaController extends Controller
 {
     public function consultaPessoas()
     {
 
-        $pessoas = DB::table('pessoas')->orderBy('id', 'asc')->simplePaginate(15);
+        $pessoas = DB::table('pessoas')->orderBy('id', 'asc')->Paginate(REGISTROS_POR_PAGINA);
 
         return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
     }
@@ -22,8 +24,36 @@ class PessoaController extends Controller
 
         return view('events.cadastroPessoa');
     }
-    public function pesquisaPessoaFiltro(){
-        echo('Tetse');
+
+    public function pesquisaPessoaFiltro( Request $request){
+        $tipoBusca = $request->tipo_busca;
+        $filtro_pesquisa = $request->filtro_pesquisa;
+        //echo( $filtro_pesquisa . $tipoBusca);
+
+        if ( strlen( $filtro_pesquisa) == 0 ){
+
+            $pessoas = DB::table('pessoas')->orderBy('id', 'asc')->Paginate(REGISTROS_POR_PAGINA);
+            return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
+
+        }
+        elseif($tipoBusca == 0 ){
+           //busca por nome
+            $pessoas = DB::table('pessoas')
+            ->select('*')
+            ->where('nome', 'LIKE', ['%' . $filtro_pesquisa . '%'])
+            ->orderBy('id', 'asc')
+            ->Paginate(REGISTROS_POR_PAGINA);
+            return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
+        }elseif($tipoBusca == 1 ){
+            // busca por Cpf
+            $pessoas = DB::table('pessoas')
+            ->select('*')
+            ->where('cpfcnpj', 'LIKE', ['%' . $filtro_pesquisa . '%'])
+            ->orderBy('id', 'asc')
+            ->Paginate(REGISTROS_POR_PAGINA);
+            return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
+        }
+
 
     }
 
@@ -81,9 +111,6 @@ class PessoaController extends Controller
     {
 
         $pessoa =  Pessoa::findOrFail($id);
-
-
-
         return view('events/alterarPessoa', ['pessoa' => $pessoa]);
     }
 }

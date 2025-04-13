@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\GerenciamentoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PessoaController;
+use App\Http\Controllers\ContratoController;
+use App\Models\Contrato;
 use GuzzleHttp\Middleware;
 
 rotasMenuHome();
@@ -88,6 +90,7 @@ function rotasMenuGerenciamento()
     rotasEmpresa();
     rotasUsuario();
     rotasPessoa();
+    rotasContratos();
 }
 
 /**
@@ -157,4 +160,10 @@ function rotasPessoa()
     Route::get('/events/pesquisaPessoaFiltro/', [PessoaController::class, 'pesquisaPessoaFiltro'])->name('gerenciamento.pessoa.pesquisa_pessoa_filtro');
     //Route::get('/events/alterarUsuario/{id}', [UserController::class, 'alterarUsuario'])->name('gerenciamento.usuario.formulario.altera');
     //Route::get('/inserirUsuario', [UserController::class, 'inserirUsuario'])->name('gerenciamento.usuario.formulario.insere');
+}
+
+function rotasContratos()
+{
+    Route::get('/events/incluirContrato/{id}', [ContratoController::class, 'incluirContrato'])->name('gerenciamento.incluir_contrato');
+
 }
