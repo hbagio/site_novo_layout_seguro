@@ -9,6 +9,8 @@
     color: var(--cor_suave_50);
 }
 
+
+
 .campo_label {
     background: var(--cor_suave_25);
     text-align: center;
@@ -39,7 +41,7 @@
     height: var(--perc_full);
     line-height:calc(3.5em - 4px);
     padding: 0 .3em;
-} 
+}
 
 .campo select {
     outline: none;
@@ -67,6 +69,7 @@
     padding:5px;
     color:var(--cor_suave_50);
     resize: none;
+
 } textarea::placeholder {
     color: var(--cor_suave_50)
 }

@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->text('descricao');
                 $table->string('seguradora');
                 $table->float('valor');
-                $table->float('comicao');
+                $table->float('comissao');
                 $table->date('datainicio');
                 $table->date('datafim');
                 $table->string('apolice');
@@ -28,10 +28,9 @@ return new class extends Migration
                 $table->unsignedBigInteger('idpessoa');
                 $table->foreign('idpessoa')
                       ->references('id')
-                      ->on('pessoas')
-                      ->onDelete('cascade');
+                      ->on('pessoas');
 
-            
+
         });
     }
 
