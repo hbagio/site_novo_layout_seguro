@@ -53,7 +53,7 @@ class ContratoController extends Controller
     public function consultaContratos(){
 
         $contratos = DB::table('contratos')
-        ->select('contratos.*','pessoas.nome')
+        ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
         ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
         ->orderBy('contratos.id', 'desc')
         ->Paginate(REGISTROS_POR_PAGINA);
@@ -65,11 +65,51 @@ class ContratoController extends Controller
     public function visualizarContrato($id){
 
         $contrato =  DB::table('contratos')
-        ->select('contratos.*','pessoas.nome')
+        ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
         ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
         ->where('contratos.id', $id)
         ->first();
         return view('events.visualizarContratos', ['contrato' =>  $contrato]);
+
+    }
+
+    public function pesquisaContratoFiltro(Request $request){
+        $tipoBusca = $request->tipo_busca;
+        $filtro_pesquisa = $request->filtro_pesquisa;
+        //echo( $filtro_pesquisa . $tipoBusca);
+
+        if ( strlen( $filtro_pesquisa) == 0 ){
+
+            $contratos = DB::table('contratos')
+            ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+            ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+            ->orderBy('contratos.id', 'desc')
+            ->Paginate(REGISTROS_POR_PAGINA);
+
+            return view('events.consultaContratos', ['contratos' =>  $contratos]);
+
+        }
+        elseif($tipoBusca == 0 ){
+           //busca por nome
+           $contratos = DB::table('contratos')
+           ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+            ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+            ->where('nome', 'LIKE', ['%' . $filtro_pesquisa . '%'])
+            ->orderBy('id', 'asc')
+            ->Paginate(REGISTROS_POR_PAGINA);
+            return view('events.consultaContratos', ['contratos' =>  $contratos]);
+
+        }elseif($tipoBusca == 1 ){
+            // busca por Cpf
+            $contratos = DB::table('contratos')
+            ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+            ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+            ->where('cpfcnpj', 'LIKE', ['%' . $filtro_pesquisa . '%'])
+            ->orderBy('id', 'asc')
+            ->Paginate(REGISTROS_POR_PAGINA);
+            return view('events.consultaContratos', ['contratos' =>  $contratos]);
+        }
+
 
     }
 }

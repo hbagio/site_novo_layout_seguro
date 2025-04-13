@@ -12,19 +12,34 @@
                 </div>
             </div>
             <br>
+ 
             <div class="container_campo col_10">
-                <label class="campo_label col_3">Código Cliente</label>
+                <label class="campo_label col_3">Nome Cliente</label>
                 <div class="campo">
-                    <input type="text" class="form-control" name="idpessoa" id="idpessoa"
-                        value="{{ $contrato->idpessoa }}" readonly required>
+                    <input type="text" class="form-control" name="nome" id="nome"
+                        value="{{ $contrato->nome }}" readonly required>
+                </div>
+            </div>
+            <br>
+            <div class="container_campo col_10">
+                <label class="campo_label col_3">Cpf/Cnpj Cliente</label>
+                <div class="campo">
+                    <input type="text" class="form-control" name="nome" id="nome"
+                        value="{{ $contrato->cpfcnpj }}" readonly required>
                 </div>
             </div>
             <br>
             <div class="container_campo col_10">
                 <label class="campo_label col_3">Nome Cliente</label>
                 <div class="campo">
-                    <input type="text" class="form-control" name="nome_cliente" id="nome_cliente"
-                        value="{{ $contrato->nome }}" readonly required>
+                    <input type="text" class="form-control" name="situacao" id="situacao"
+                    @if ($contrato->situacao == 1)
+                        value="Ativo"
+                    @else
+                       value = "Inativo"
+                    @endif
+                    readonly required>
+
                 </div>
             </div>
             <br>
