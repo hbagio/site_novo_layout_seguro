@@ -172,5 +172,6 @@ function rotasContratos()
     Route::get('/events/pesquisaContratoFiltro/', [ContratoController::class, 'pesquisaContratoFiltro'])->name('gerenciamento.contrato.pesquisa_contrato_filtro');
     Route::get('/events/alterarContrato/{id}', [ContratoController::class, 'alterarContrato'])->name('gerenciamento.visualizar_contrato');
     Route::post('/events/updateContrato', [ContratoController::class, 'updateContrato'])->name('gerenciamento.update_contrato');
+    Route::get('/events/consultaContratosDataFim', [ContratoController::class, 'consultaContratosDataFim'])->name('gerenciamento.consulta_contrato');
 
 }

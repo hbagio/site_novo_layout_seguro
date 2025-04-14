@@ -62,6 +62,18 @@ class ContratoController extends Controller
 
     }
 
+    public function consultaContratosDataFim(){
+
+        $contratos = DB::table('contratos')
+        ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+        ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+        ->orderBy('contratos.datafim', 'asc')
+        ->Paginate(REGISTROS_POR_PAGINA);
+
+        return view('events.consultaContratos', ['contratos' =>  $contratos]);
+
+    }
+
     public function visualizarContrato($id){
 
         $contrato =  DB::table('contratos')

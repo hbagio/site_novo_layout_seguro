@@ -20,7 +20,7 @@
                             </div>
                         </div>
 
-                        <div class="container_campo col_10">
+                        <div class="container_campo col_10" style="margin-right:5px">
                             <div class="campo">
                                 <input type="text" name="filtro_pesquisa" id="filtro_pesquisa"
                                     placeholder="pesquisar contrato">
@@ -28,8 +28,8 @@
                             <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </form>
-
-                    <a href="/events/consultaPessoas" class="card_acao  col_2">Consultar Cliente</a>
+                    <a href="/events/consultaContratosDataFim" class="card_acao  col_2" style="margin-right:5px"> Ordenar Data Fim</a>
+                    <a href="/events/consultaPessoas" class="card_acao  col_2" style="margin-right:5px">Consultar Cliente</a>
                 </div>
                     <br>
 
@@ -53,7 +53,7 @@
                                 <td> {{ $contrato->cpfcnpj }} </td>
                                 <td> {{ $contrato->seguradora }} </td>
                                 <td> {{ $contrato->datainicio }} </td>
-                                <td> {{ $contrato->datafim }} </td>
+                                <td > {{ $contrato->datafim }} </td>
                                 <td> {{ $contrato->valor }} </td>
                                 @if ($contrato->situacao == 1)
                                     <td>Ativo</td>

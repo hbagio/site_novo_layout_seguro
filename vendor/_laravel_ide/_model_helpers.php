@@ -253,6 +253,30 @@ namespace App\Models {
     /**
      * App\Models\Contrato
      *
+     * @property int $idpessoa
+     * @property int $situacao
+     * @property mixed $apolice
+     * @property string $datafim
+     * @property string $datainicio
+     * @property mixed $comissao
+     * @property mixed $valor
+     * @property mixed $seguradora
+     * @property mixed $descricao
+     * @property \Illuminate\Support\Carbon|null $updated_at
+     * @property \Illuminate\Support\Carbon|null $created_at
+     * @property int $id
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereId($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereCreatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereUpdatedAt($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereDescricao($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereSeguradora($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereValor($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereComissao($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereDatainicio($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereDatafim($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereApolice($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereSituacao($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato whereIdpessoa($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato newModelQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato newQuery()
      * @method static \Illuminate\Database\Eloquent\Builder<Contrato>|Contrato query()
@@ -773,7 +797,7 @@ namespace App\Models {
     /**
      * App\Models\Pessoa
      *
-     * @property int $cep
+     * @property mixed $cep
      * @property int $tipo
      * @property mixed $email
      * @property mixed $telefone
