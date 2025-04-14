@@ -3,14 +3,15 @@
 @section('content')
     <section class="galeria">
         <div class="container">
-            <h1 class="titulo_grande cor_escuro_50">Cadastro de Pessoas</h1><br>
+            <h1 class="titulo_grande cor_escuro_50">Cadastro de Cliente</h1><br>
             <form class="card flex_col col_12" action="/events/incluirPessoas" method="POST" enctype="multipart/form-data">
                 {{-- Diretiva necessário por segurança, senão não deixar fazer o request --}}
                 @csrf
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Nome</label>
                     <div class="campo">
-                        <input type="text" class="form-control" name="nome" id="nome required" placeholder="Nome da Pessoa" required>
+                        <input type="text" class="form-control" name="nome" id="nome required"
+                            placeholder="Nome da Pessoa" required>
                     </div>
                 </div>
                 <br>
@@ -28,21 +29,24 @@
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Cpf/Cnpj</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="cpfcnpj" id="cpfcnpj" placeholder="Cpf/Cnpj da Pessoa" required>
+                        <input type="text" class="form-control"name="cpfcnpj" id="cpfcnpj"
+                            placeholder="Cpf/Cnpj da Pessoa" required>
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Endereço</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="endereco" id="endereco" required placeholder="Endereço da Pessoa">
+                        <input type="text" class="form-control"name="endereco" id="endereco" required
+                            placeholder="Endereço da Pessoa">
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Cep</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="cep" id="cep" required placeholder="Cep da Pessoa formato 99999-99" maxlength="9" minlength="9">
+                        <input type="text" class="form-control"name="cep" id="cep" required
+                            placeholder="Cep da Pessoa formato 99999-99" maxlength="9" minlength="9">
                     </div>
                 </div>
                 <br>
@@ -50,14 +54,16 @@
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Bairro</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="bairro" id="bairro" required placeholder="Bairro da Pessoa">
+                        <input type="text" class="form-control"name="bairro" id="bairro" required
+                            placeholder="Bairro da Pessoa">
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Cidade</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="cidade" id="cidade" required placeholder="Cidade da Pessoa">
+                        <input type="text" class="form-control"name="cidade" id="cidade" required
+                            placeholder="Cidade da Pessoa">
                     </div>
                 </div>
                 <br>
@@ -100,22 +106,24 @@
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Telefone</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="telefone" id="telefone" required placeholder="Telefone da Pessoa">
+                        <input type="text" class="form-control"name="telefone" id="telefone" required
+                            placeholder="Telefone da Pessoa">
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Email</label>
                     <div class="campo">
-                        <input type="email" class="form-control"name="email" id="email" required placeholder="Email da Pessoa">
+                        <input type="email" class="form-control"name="email" id="email" required
+                            placeholder="Email da Pessoa">
                     </div>
                 </div>
 
                 <br>
-                    <input type="submit" class="card_acao col_10" value="Cadastrar">
-                    <br>
-                    <a class="card_acao muted col_5" href="/events/consultaPessoas" style="margin-right:5px">Voltar</a>
-
+                <div class="flex_row col_10">
+                    <input type="submit" class="card_acao " value="Cadastrar" style="margin-right:5px">
+                    <a class="card_acao muted " href="/events/consultaPessoas" style="margin-right:5px">Voltar</a>
+                </div>
 
             </form>
         </div>

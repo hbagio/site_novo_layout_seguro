@@ -23,7 +23,7 @@
                     <td> {{ $usuario->name }} </td>
                     <td> {{ $usuario->email }} </td>
                     <td>
-                       <div class="flex_col">
+                       <div >
                             <a class="lista_consulta_acao editar" href="/events/alterarUsuario/{{ $usuario->id }}">Editar <i class="fa-solid fa-pen-to-square"></i></a>
                             <a class="lista_consulta_acao excluir" href="/events/excluirUsuario/{{ $usuario->id }}">Excluir <i class="fa-solid fa-trash"></i></a>
                        </div>

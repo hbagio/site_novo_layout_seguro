@@ -59,10 +59,10 @@ class PessoaController extends Controller
 
     public function update(Request $request)
     {
-        echo($request->codigo);
+        
 
         $pessoa = Pessoa::findOrFail($request->codigo);
-        echo($request->codigo);
+       
         $pessoa->nome = $request->nome;
         $pessoa->cpfcnpj = $request->cpfcnpj;
         $pessoa->endereco =  $request->endereco;
@@ -73,7 +73,7 @@ class PessoaController extends Controller
         $pessoa->email =  $request->email;
         $pessoa->save();
 
-         return redirect('/events/consultaPessoas')->with('msg', 'Usuário alterado com sucesso!');
+         return redirect('/events/consultaPessoas')->with('msg', 'Cliente alterado com sucesso!');
 
     }
 
@@ -114,5 +114,12 @@ class PessoaController extends Controller
 
         $pessoa =  Pessoa::findOrFail($id);
         return view('events/alterarPessoa', ['pessoa' => $pessoa]);
+    }
+
+    
+    public function visualizarPessoa($id)
+    {
+        $pessoa =  Pessoa::findOrFail($id);
+        return view('events/visualizarPessoa', ['pessoa' => $pessoa]);
     }
 }
