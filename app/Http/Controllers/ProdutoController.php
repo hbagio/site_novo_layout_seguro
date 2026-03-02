@@ -13,7 +13,7 @@ class ProdutoController extends Controller
 {
 
 
-    public function index()
+    public function index1()
     {
         //pega os dados do model
         $produtos  = DB::table('produtos')
@@ -33,6 +33,11 @@ class ProdutoController extends Controller
         return view('welcome', ['produtos' =>  $produtos, 'categorias' => $categoria]);
     }
 
+    public function index()
+    {
+
+            return view('events.gerenciamento');
+    }
 
 
     public function cadastroProduto()
@@ -98,7 +103,6 @@ class ProdutoController extends Controller
 
         if ($request->hasFile('imagem5') && $request->file('imagem5')->isValid()) {
             $produto->imagem5 = $this->validaImagem($request->imagem5);
-
         }
 
         $produto->save();
@@ -106,11 +110,12 @@ class ProdutoController extends Controller
         return redirect('events/listarProduto')->with('msg', 'Produto Cadastrado com Sucesso!');
     }
 
-    public function validaImagem($imagem){
-            $extensao = $imagem->extension();
-            $imagemNome = md5($imagem->getClientOriginalName() . strtotime("now")) . "." . $extensao;
-            $imagem->move(public_path('img/produtos'), $imagemNome);
-            return $imagemNome;
+    public function validaImagem($imagem)
+    {
+        $extensao = $imagem->extension();
+        $imagemNome = md5($imagem->getClientOriginalName() . strtotime("now")) . "." . $extensao;
+        $imagem->move(public_path('img/produtos'), $imagemNome);
+        return $imagemNome;
     }
 
     public function getDadosProduto($id)

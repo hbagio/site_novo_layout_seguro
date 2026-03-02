@@ -7,6 +7,7 @@ use App\Http\Controllers\GerenciamentoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\ContratoController;
+use App\Http\Controllers\ParceiroController;
 use App\Models\Contrato;
 use GuzzleHttp\Middleware;
 
@@ -90,6 +91,7 @@ function rotasMenuGerenciamento()
     rotasEmpresa();
     rotasUsuario();
     rotasPessoa();
+    rotasParceiros();
     rotasContratos();
 }
 
@@ -158,6 +160,21 @@ function rotasPessoa()
     Route::get('/events/excluirPessoa/{id}', [PessoaController::class, 'delete'])->name('gerenciamento.pessoa.deleta');
     Route::post('/events/updatePessoa/', [PessoaController::class, 'update'])->name('gerenciamento.pessoa.update');
     Route::get('/events/pesquisaPessoaFiltro/', [PessoaController::class, 'pesquisaPessoaFiltro'])->name('gerenciamento.pessoa.pesquisa_pessoa_filtro');
+    //Route::get('/events/alterarUsuario/{id}', [UserController::class, 'alterarUsuario'])->name('gerenciamento.usuario.formulario.altera');
+    //Route::get('/inserirUsuario', [UserController::class, 'inserirUsuario'])->name('gerenciamento.usuario.formulario.insere');
+}
+
+function rotasParceiros()
+{
+    Route::get('/events/consultaParceiros', [ParceiroController::class, 'consultaParceiros'])->name('gerenciamento.consulta_parceiro');
+    Route::get('/events/cadastrarParceiros', [ParceiroController::class, 'cadastrarParceiros'])->name('gerenciamento.cadastrar_parceiro');
+    Route::post('/events/incluirParceiro', [ParceiroController::class, 'incluirParceiro'])->name('gerenciamento.incluir_parceiro');
+    Route::get('/events/alterarParceiro/{id}', [ParceiroController::class, 'alterarParceiro'])->name('gerenciamento.parceiro.altera');
+    Route::match(['get', 'post'],'/events/desativarParceiro/{id}', [ParceiroController::class, 'desativarParceiro'])->name('gerenciamento.parceiro.desativa');
+    Route::get('/events/visutalizarParceiro/{id}', [ParceiroController::class, 'visualizarParceiro'])->name('gerenciamento.parceiro.altera');
+    Route::get('/events/excluirParceiro/{id}', [ParceiroController::class, 'delete'])->name('gerenciamento.parceiro.deleta');
+    Route::post('/events/updateParceiro/', [ParceiroController::class, 'updateParceiro'])->name('gerenciamento.parceiro.update');
+    Route::get('/events/pesquisaParceiroaFiltro/', [ParceiroController::class, 'pesquisaParceiroFiltro'])->name('gerenciamento.parceiro.pesquisa_pessoa_filtro');
     //Route::get('/events/alterarUsuario/{id}', [UserController::class, 'alterarUsuario'])->name('gerenciamento.usuario.formulario.altera');
     //Route::get('/inserirUsuario', [UserController::class, 'inserirUsuario'])->name('gerenciamento.usuario.formulario.insere');
 }

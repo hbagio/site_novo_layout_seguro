@@ -29,8 +29,8 @@
                         </div>
                     </form>
 
-                    <div class="flex_row col_1">
-                    </div>
+                    <div class="flex_row col_1"></div>
+                    
                     <a href="/events/cadastrarPessoas" class="card_acao  col_2" style="margin-right:5px">Cadastrar Cliente</a>
 
                     <a  href="/events/consultaContratos" class="card_acao muted col_1" style="margin-right:5px">Contratos</a>

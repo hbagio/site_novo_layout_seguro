@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Informacao;
 use App\Models\Produto;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\DB;
 use Exception;
 
 class GerenciamentoController extends Controller

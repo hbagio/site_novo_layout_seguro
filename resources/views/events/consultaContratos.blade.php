@@ -1,35 +1,42 @@
-@section('title', 'Fazendo Festa | Produto')
+@section('title', 'Fazendo Festa | Vendas')
 @extends('layouts.main')
 @section('content')
     <section class="galeria">
         <div class="container">
-            <h1 class="titulo_grande cor_escuro_50">Clientes</h1><br>
+            <h1 class="titulo_grande cor_escuro_50">Vendas</h1><br>
             <div class="card flex_col">
-                <form class="container flex_row menu_fechado" id="menu_filtro_mobile" action="/events/pesquisaContratoFiltro/"
-                    method="GET" enctype="multipart/form-data">
-                    @csrf
-                    <div class="container_campo col_5">
-                        <label class="campo_label col_5">Pesquisar por:</label>
-                        <div class="campo">
-                            <select name="tipo_busca" id = "tipo_busca" style="text-align: left" required>
-                                <option value="0"> Nome</option>
-                                <option value="1"> Cpf/Cnpj</option>
-                            </select>
+                <div class="flex_row col_12">
+                      <a href="/events/consultaPessoas" class="card_acao  col_2" style="margin-right:5px">Consultar Cliente</a>
+                    <form class="container flex_row menu_fechado" id="menu_filtro_mobile"
+                        action="/events/pesquisaContratoFiltro/" method="GET" enctype="multipart/form-data">
+                        @csrf
+                        <div class="container_campo col_5">
+                            <label class="campo_label col_5">Pesquisar por:</label>
+                            <div class="campo">
+                                <select name="tipo_busca" id = "tipo_busca" style="text-align: left" required>
+                                    <option value="0"> Nome</option>
+                                    <option value="1"> Cpf/Cnpj</option>
+                                </select>
 
+                            </div>
                         </div>
-                    </div>
-                    <div class="container_campo col_12">
-                        <div class="campo">
-                            <input type="text" name="filtro_pesquisa" id="filtro_pesquisa"
-                                placeholder="pesquisar contrato">
+                        <div class="container_campo col_8">
+                            <div class="campo">
+                                <input type="text" name="filtro_pesquisa" id="filtro_pesquisa"
+                                    placeholder="pesquisar contrato">
+                            </div>
+                            <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
-                        <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
+                    </form>
+
                     <div class="flex_row col_1"></div>
-                    <a href="/events/consultaPessoas" class="card_acao  col_4">Consultar Cliente</a>
-                    
-                </form>
+
+
+
+                </div>
                 <br>
+                <label style="color: green"> Consulte o Cliente para Incluir uma Nova Venda </label>
+
                 <div class="flex_row col_12">
 
 

@@ -19,6 +19,8 @@ class PessoaController extends Controller
         return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
     }
 
+    
+
     public function cadastrarPessoas()
     {
 

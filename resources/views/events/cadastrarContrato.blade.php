@@ -1,9 +1,9 @@
-@section('title', 'Fazendo Festa | Produto')
+@section('title', 'Fazendo Festa | Venda')
 @extends('layouts.main')
 @section('content')
 <section class="galeria">
     <div class="container">
-    <h1 class="titulo_grande cor_escuro_50">Novo Contrato</h1><br>
+    <h1 class="titulo_grande cor_escuro_50">Nova Venda</h1><br>
     <form class="card flex_col col_12" action="/events/storeContrato" method="POST" enctype="multipart/form-data">
             {{-- Diretiva necessário por segurança, senão não deixar fazer o request --}}
             @csrf

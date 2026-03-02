@@ -1,16 +1,17 @@
-@section('title', 'Fazendo Festa | Produto')
+@section('title', 'Bagio Seguros | Parceiro')
 @extends('layouts.main')
 @section('content')
     <section class="galeria">
         <div class="container">
-            <h1 class="titulo_grande cor_escuro_50">Cadastro de Pessoas</h1><br>
-            <form class="card flex_col col_12" action="/events/incluirPessoas" method="POST" enctype="multipart/form-data">
+            <h1 class="titulo_grande cor_escuro_50">Cadastro de Parceiros</h1><br>
+            <form class="card flex_col col_12" action="/events/incluirParceiro" method="POST" enctype="multipart/form-data">
                 {{-- Diretiva necessário por segurança, senão não deixar fazer o request --}}
                 @csrf
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Nome</label>
                     <div class="campo">
-                        <input type="text" class="form-control" name="nome" id="nome required" placeholder="Nome da Pessoa" required>
+                        <input type="text" class="form-control" name="nome" id="nome"
+                            placeholder="Nome da Pessoa" required>
                     </div>
                 </div>
                 <br>
@@ -23,45 +24,60 @@
                         </select>
 
                     </div>
+                    <label class="campo_label col_3">Data de Nascimento</label>
+                    <div class="campo">
+                        <input type="date" class="form-control" name="data_nascimento" id="data_nascimento"
+                            placeholder="Data de Nascimento" >
+                    </div>
+
+
                 </div>
                 <br>
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Cpf/Cnpj</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="cpfcnpj" id="cpfcnpj" placeholder="Cpf/Cnpj da Pessoa" required>
+                        <input type="text" class="form-control"name="cpfcnpj" id="cpfcnpj"
+                            placeholder="Cpf/Cnpj do Parceiro" required>
+                    </div>
+                    <label class="campo_label col_3">RG</label>
+                    <div class="campo">
+                        <input type="text" class="form-control"name="rg" id="rg"
+                            placeholder="RG do Parceiro" >
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
-                    <label class="campo_label col_3">Endereço</label>
+                    <label class="campo_label col_3">Logradouro</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="endereco" id="endereco" required placeholder="Endereço da Pessoa">
+                        <input type="text" class="form-control"name="endereco" id="endereco" required
+                            placeholder="Endereço da Parceiro">
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
-                    <label class="campo_label col_3">Cep</label>
-                    <div class="campo">
-                        <input type="text" class="form-control"name="cep" id="cep" required placeholder="Cep da Pessoa formato 99999-99" maxlength="9" minlength="9">
-                    </div>
-                </div>
-                <br>
 
-                <div class="container_campo col_10">
                     <label class="campo_label col_3">Bairro</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="bairro" id="bairro" required placeholder="Bairro da Pessoa">
+                        <input type="text" class="form-control"name="bairro" id="bairro" required
+                            placeholder="Bairro do Parceiro">
                     </div>
-                </div>
-                <br>
-                <div class="container_campo col_10">
+
                     <label class="campo_label col_3">Cidade</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="cidade" id="cidade" required placeholder="Cidade da Pessoa">
+                        <input type="text" class="form-control"name="cidade" id="cidade" required
+                            placeholder="Cidade do Parceiro">
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
+
+
+                    <label class="campo_label col_3">Cep</label>
+                    <div class="campo">
+                        <input type="text" class="form-control"name="cep" id="cep" required
+                            placeholder="Formato 99999-99" maxlength="9" minlength="9">
+                    </div>
+
                     <label class="campo_label col_3">Estado</label>
                     <div class="campo">
                         <div class="campo">
@@ -92,7 +108,6 @@
                                 <option value="SP - São Paulo">SP - São Paulo</option>
                                 <option value="SE - Sergipe">SE - Sergipe</option>
                                 <option value="TO - Tocantins">TO - Tocantins</option>
-
                             </select>
                         </div>
                     </div>
@@ -101,22 +116,68 @@
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Telefone</label>
                     <div class="campo">
-                        <input type="text" class="form-control"name="telefone" id="telefone" required placeholder="Telefone da Pessoa">
+                        <input type="text" class="form-control"name="telefone" id="telefone" required
+                            placeholder="Telefone do Parceiro">
+                    </div>
+
+                    <label class="campo_label col_3">Email</label>
+                    <div class="campo">
+                        <input type="email" class="form-control"name="email" id="email" 
+                            placeholder="Email do Parceiro">
                     </div>
                 </div>
                 <br>
                 <div class="container_campo col_10">
-                    <label class="campo_label col_3">Email</label>
+                    <label class="campo_label col_3">Banco</label>
                     <div class="campo">
-                        <input type="email" class="form-control"name="email" id="email" required placeholder="Email da Pessoa">
+                        <input type="text" class="form-control"name="banco" id="banco"
+                            placeholder="Banco">
+                    </div>
+                    <label class="campo_label col_3">Agência</label>
+                    <div class="campo">
+                        <input type="text" class="form-control"name="agencia" id="agencia"
+                            placeholder="Agência">
                     </div>
                 </div>
-
                 <br>
-                    <input type="submit" class="card_acao col_10" value="Cadastrar">
-                    <br>
-                    <a class="card_acao muted col_5" href="/events/consultaPessoas" style="margin-right:5px">Voltar</a>
+                <div class="container_campo col_10">
+                    <label class="campo_label col_3">Conta</label>
+                    <div class="campo">
+                        <input type="text" class="form-control"name="conta" id="conta"
+                            placeholder="Conta">
+                    </div>
+                    <label class="campo_label col_3">Chave Pix</label>
+                    <div class="campo">
+                        <input type="text" class="form-control"name="pix" id="pix"
+                            placeholder="Chave Pix">
+                    </div>
+                </div>
+                <br>
+                <div class="container_campo col_10">
+                    <label class="campo_label col_3">Parcentual Acordo</label>
+                    <div class="campo">
+                        <input type="number" step="0.01" min="0" max="100" lang="pt-BR"
+                            placeholder="0,00" class="form-control"name="percentual" id="percentual" required>
+                    </div>
+                    <label class="campo_label col_3">Contrato</label>
+                    <div class="campo">
+                        <input type="file" accept= ".pdf" name="contrato" id="contrato">
+                    </div>
+                </div>
+                <br>
+                <div class="container_campo col_10">
+                  <label class="campo_label col_3">Informações Adicionais</label>
+                    <div class="campo">
+                        <textarea  class="form-control"name="observacoes" id="observacoes"
+                            rows="4" cols="50" placeholder="Informações Adicionais"></textarea>
+                    </div>
+                </div>
+                <br>
 
+                <input type="submit" class="card_acao col_5" value="Cadastrar Parceiro">
+                <br>
+
+                <a class="card_acao muted col_3" href="/events/consultaParceiros" style="margin-right:5px">Voltar</a>
 
             </form>
         </div>
