@@ -3,7 +3,11 @@
 @section('content')
 <section class="galeria">
     <div class="container">
+<<<<<<< HEAD
     <h1 class="titulo_grande cor_escuro_50">Nova Venda</h1><br>
+=======
+    <h1 class="titulo_grande cor_escuro_50">Cadastro de Contrato</h1><br>
+>>>>>>> 7ab758063d90c7734e4a95eb6fbe0dd4b937d39c
     <form class="card flex_col col_12" action="/events/storeContrato" method="POST" enctype="multipart/form-data">
             {{-- Diretiva necessário por segurança, senão não deixar fazer o request --}}
             @csrf
@@ -78,8 +82,10 @@
             </div>
 
             <br>
-            <input type="submit" class="card_acao col_10" value="Cadastrar"><br>
+            <div class="flex_row col_10">
+            <input type="submit" class="card_acao" value="Cadastrar" style="margin-right:5px">
             <a href="/events/consultaPessoas" class="card_acao muted col_5">Voltar</a>
+            </div>
         </form>
     </div>
 </section>

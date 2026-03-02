@@ -62,6 +62,18 @@ class ContratoController extends Controller
 
     }
 
+    public function consultaContratosDataFim(){
+
+        $contratos = DB::table('contratos')
+        ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+        ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+        ->orderBy('contratos.datafim', 'asc')
+        ->Paginate(REGISTROS_POR_PAGINA);
+
+        return view('events.consultaContratos', ['contratos' =>  $contratos]);
+
+    }
+
     public function visualizarContrato($id){
 
         $contrato =  DB::table('contratos')
@@ -70,6 +82,39 @@ class ContratoController extends Controller
         ->where('contratos.id', $id)
         ->first();
         return view('events.visualizarContratos', ['contrato' =>  $contrato]);
+
+    }
+
+    public function alterarContrato($id){
+
+        $contrato =  DB::table('contratos')
+        ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+        ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+        ->where('contratos.id', $id)
+        ->first();
+        return view('events.alterarContratos', ['contrato' =>  $contrato]);
+
+    }
+    
+    public function updateContrato(Request $request){
+
+        $contrato = Contrato::findOrFail($request->id);
+        $contrato->situacao = $request->situacao;
+        $contrato->seguradora = $request->seguradora;
+        $contrato->descricao = $request->descricao;
+        $contrato->valor = $request->valor;
+        $contrato->comissao = $request->comissao;
+        $contrato->datainicio = $request->datainicio;
+        $contrato->datafim = $request->datafim;
+
+        
+        if ($request->hasFile('apolice') && $request->file('apolice')->isValid()) {
+            $contrato->apolice = $this->validaAnexo($request->apolice);
+        }
+
+        $contrato->save();
+
+        return redirect('/events/consultaContratos')->with('msg', 'Contrato Alterado com Sucesso!');
 
     }
 

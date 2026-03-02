@@ -159,6 +159,7 @@ function rotasPessoa()
     Route::get('/events/alterar/{id}', [PessoaController::class, 'alterar'])->name('gerenciamento.pessoa.altera');
     Route::get('/events/excluirPessoa/{id}', [PessoaController::class, 'delete'])->name('gerenciamento.pessoa.deleta');
     Route::post('/events/updatePessoa/', [PessoaController::class, 'update'])->name('gerenciamento.pessoa.update');
+    Route::get('/events/visualizarPessoa/{id}', [PessoaController::class, 'visualizarPessoa'])->name('gerenciamento.pessoa.visualizar');
     Route::get('/events/pesquisaPessoaFiltro/', [PessoaController::class, 'pesquisaPessoaFiltro'])->name('gerenciamento.pessoa.pesquisa_pessoa_filtro');
     //Route::get('/events/alterarUsuario/{id}', [UserController::class, 'alterarUsuario'])->name('gerenciamento.usuario.formulario.altera');
     //Route::get('/inserirUsuario', [UserController::class, 'inserirUsuario'])->name('gerenciamento.usuario.formulario.insere');
@@ -186,4 +187,8 @@ function rotasContratos()
     Route::get('/events/consultaContratos', [ContratoController::class, 'consultaContratos'])->name('gerenciamento.consulta_contrato');
     Route::get('/events/visualizarContrato/{id}', [ContratoController::class, 'visualizarContrato'])->name('gerenciamento.visualizar_contrato');
     Route::get('/events/pesquisaContratoFiltro/', [ContratoController::class, 'pesquisaContratoFiltro'])->name('gerenciamento.contrato.pesquisa_contrato_filtro');
+    Route::get('/events/alterarContrato/{id}', [ContratoController::class, 'alterarContrato'])->name('gerenciamento.visualizar_contrato');
+    Route::post('/events/updateContrato', [ContratoController::class, 'updateContrato'])->name('gerenciamento.update_contrato');
+    Route::get('/events/consultaContratosDataFim', [ContratoController::class, 'consultaContratosDataFim'])->name('gerenciamento.consulta_contrato');
+
 }

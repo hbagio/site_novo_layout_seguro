@@ -10,31 +10,32 @@
                     <form class="container flex_row menu_fechado" id="menu_filtro_mobile"
                         action="/events/pesquisaPessoaFiltro/" method="GET" enctype="multipart/form-data">
                         @csrf
-                        <div class="container_campo col_5">
-                            <label class="campo_label col_5">Pesquisar por:</label>
+                        <div class="container_campo col_5" style="margin-right:5px">
+                            <label class="campo_label col_5">Busca por:</label>
                             <div class="campo">
                                 <select name="tipo_busca" id = "tipo_busca" style="text-align: left" required>
                                     <option value="0"> Nome</option>
                                     <option value="1"> Cpf/Cnpj</option>
                                 </select>
-
                             </div>
                         </div>
-                        <div class="container_campo col_8">
+
+                        <div class="container_campo col_10" style="margin-right:5px">
                             <div class="campo">
                                 <input type="text" name="filtro_pesquisa" id="filtro_pesquisa"
                                     placeholder="pesquisar cliente">
                             </div>
-                            <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass" style="margin-right:5px"></i></button>
                         </div>
                     </form>
 
+<<<<<<< HEAD
                     <div class="flex_row col_1"></div>
                     
+=======
+>>>>>>> 7ab758063d90c7734e4a95eb6fbe0dd4b937d39c
                     <a href="/events/cadastrarPessoas" class="card_acao  col_2" style="margin-right:5px">Cadastrar Cliente</a>
-
                     <a  href="/events/consultaContratos" class="card_acao muted col_1" style="margin-right:5px">Contratos</a>
-
                     <a href="/events/gerenciamento" class="card_acao muted col_1" style="margin-right:5px">Voltar</a>
                 </div>
 
@@ -51,7 +52,7 @@
                         <th>Estado</th>
                         <th>Cep</th> --}}
                         <th>Telefone</th>
-                        <th>E-mail</th>
+                        {{--<th>E-mail</th>--}}
                         <th>Ações</th>
                     </tr>
                     @foreach ($pessoas as $pessoa)
@@ -70,10 +71,10 @@
                             <td> {{ $pessoa->estado}} </td>
                             <td> {{ $pessoa->cep}} </td> --}}
                             <td> {{ $pessoa->telefone }} </td>
-                            <td> {{ $pessoa->email }} </td>
+                            {{-- <td> {{ $pessoa->email }} </td>--}}
                             <td>
 
-                                <a class="lista_consulta_acao editar" href="/events/alterar/{{ $pessoa->id }}"
+                                <a class="lista_consulta_acao editar" href="/events/visualizarPessoa/{{ $pessoa->id }}"
                                     role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
                                 <a class="lista_consulta_acao editar" href="/events/alterar/{{ $pessoa->id }}"
                                     role="button"> <i class="fa-solid fa-pen"></i></a>
