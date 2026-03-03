@@ -38,7 +38,7 @@
                             @case(1)
                                 value='Juridico'
                                 @break
-                            @default     
+                            @default
                         @endswitch
                             required>
 
@@ -93,7 +93,7 @@
                         <div class="campo">
                             <select name="estado" style="text-align: left" readonly required>
                                 <option value="{{$pessoa->estado}}">{{$pessoa->estado}}</option>
-                              
+
                             </select>
                         </div>
                     </div>
@@ -117,10 +117,21 @@
 
                 <br>
 
+                 <div class="container_campo col_10">
+                    <label class="campo_label col_3">Observações</label>
+                    <div class="campo">
+                        <textarea class="form-control" name="observacao" id="observacao" rows="6"
+                           readonly>{{ $pessoa->observacao }}</textarea>
+
+                    </div>
+                </div>
+                <br>
+
+
                 <div class="flex_row col_10">
                     <a class="card_acao muted " href="/events/consultaPessoas" style="margin-right:5px">Voltar</a>
                     <a href="/events/incluirContrato/{{ $pessoa->id }}" class="card_acao  col_2" style="margin-right:5px">Cadastrar Contrato</a>
-                        
+
                 </div>
 
             </form>

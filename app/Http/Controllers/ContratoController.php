@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pessoa;
 use App\Models\Contrato;
+use App\Models\Parceiro;
 use Illuminate\Support\Facades\DB;
 
 const  REGISTROS_POR_PAGINA = 12;
@@ -16,21 +17,32 @@ class ContratoController extends Controller
     {
 
         $pessoa =  Pessoa::findOrFail($id);
-        return view('events/cadastrarContrato', ['pessoa' => $pessoa]);
+        $parceiros = Parceiro::where('situacao', 1)->orderBy('nome', 'asc')->get();
+
+        return view('events/cadastrarContrato', ['pessoa' => $pessoa, 'parceiros' => $parceiros]);
     }
     public function storeContrato(Request $request)
     {
-        $situacaoAtivo  = 1;
-        $contrato = new Contrato;
 
-        $contrato->descricao = $request->descricao;
+        $contrato = new Contrato;
+        $contrato->numeroapolice = $request->numeroapolice;
+        $contrato->ramo = $request->ramo;
         $contrato->seguradora = $request->seguradora;
         $contrato->valor = $request->valor;
+        $contrato->valorliquido = $request->valorliquido;
         $contrato->comissao = $request->comissao;
         $contrato->idpessoa = $request->idpessoa;
+        $contrato->parceiro_id = $request->parceiro_id;
+        $contrato->parcelas = $request->parcelas;
+        $contrato->percentual_admin = $request->percentual_admin;
+        $contrato->percentualparceiro = $request->percentualparceiro;
+        $contrato->percentualcomissao = $request->percentualcomissao;
+        $contrato->forma_pagamento = $request->forma_pagamento;
+        $contrato->valorapagarparceiro = $request->valorapagarparceiro;
+        $contrato->observacoes = $request->observacoes;
         $contrato->datainicio = $request->datainicio;
         $contrato->datafim = $request->datafim;
-        $contrato->situacao = $situacaoAtivo;
+        $contrato->situacao = 1;
 
         if ($request->hasFile('apolice') && $request->file('apolice')->isValid()) {
             $contrato->apolice = $this->validaAnexo($request->apolice);
@@ -39,14 +51,14 @@ class ContratoController extends Controller
 
         $contrato->save();
 
-        return redirect('/events/consultaPessoas')->with('msg', 'Contrato Cadastrado com Sucesso!');
+        return redirect('/events/consultaContratos')->with('msg', 'Contrato Cadastrado com Sucesso!');
     }
 
     public function validaAnexo($apolice)
     {
         $extensao = $apolice->extension();
         $apoliceNome = md5($apolice->getClientOriginalName() . strtotime("now")) . "." . $extensao;
-        $apolice->move(public_path('img/produtos'), $apoliceNome );
+        $apolice->move(public_path('img/apolice'), $apoliceNome );
         return $apoliceNome ;
     }
 
@@ -77,8 +89,15 @@ class ContratoController extends Controller
     public function visualizarContrato($id){
 
         $contrato =  DB::table('contratos')
-        ->select('contratos.*','pessoas.nome','pessoas.cpfcnpj')
+        ->select(
+            'contratos.*',
+        'pessoas.nome as pessoa_nome',
+        'pessoas.cpfcnpj as pessoa_cpfcnpj',
+        'parceiros.nome as parceiro_nome',
+        'parceiros.cpfcnpj as parceiro_cpfcnpj'
+        )
         ->join('pessoas','pessoas.id', '=', 'contratos.idpessoa')
+        ->join('parceiros','parceiros.id', '=', 'contratos.parceiro_id')
         ->where('contratos.id', $id)
         ->first();
         return view('events.visualizarContratos', ['contrato' =>  $contrato]);
@@ -95,7 +114,7 @@ class ContratoController extends Controller
         return view('events.alterarContratos', ['contrato' =>  $contrato]);
 
     }
-    
+
     public function updateContrato(Request $request){
 
         $contrato = Contrato::findOrFail($request->id);
@@ -107,7 +126,7 @@ class ContratoController extends Controller
         $contrato->datainicio = $request->datainicio;
         $contrato->datafim = $request->datafim;
 
-        
+
         if ($request->hasFile('apolice') && $request->file('apolice')->isValid()) {
             $contrato->apolice = $this->validaAnexo($request->apolice);
         }

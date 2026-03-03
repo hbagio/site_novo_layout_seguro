@@ -73,7 +73,7 @@
                             <td> {{ $pessoa->email }} </td>
                             <td>
 
-                                <a class="lista_consulta_acao editar" href="/events/alterar/{{ $pessoa->id }}"
+                                <a class="lista_consulta_acao editar" href="/events/visualizarPessoa/{{ $pessoa->id }}"
                                     role="button"><i class="fa-solid fa-magnifying-glass"></i></a>
                                 <a class="lista_consulta_acao editar" href="/events/alterar/{{ $pessoa->id }}"
                                     role="button"> <i class="fa-solid fa-pen"></i></a>

@@ -38,7 +38,7 @@
                             @case(1)
                                 value='Juridico'
                                 @break
-                            @default     
+                            @default
                         @endswitch
                             required>
 
@@ -89,7 +89,7 @@
                 <br>
                 <div class="container_campo col_10">
                     <label class="campo_label col_3">Estado</label>
-                   
+
                         <div class="campo">
                             <select name="estado" style="text-align: left" required>
                                 <option value="{{$pessoa->estado}}">{{$pessoa->estado}}</option>
@@ -120,7 +120,7 @@
                                 <option value="SE">SE - Sergipe</option>
                                 <option value="TO">TO - Tocantins</option>
                             </select>
-                       
+
                     </div>
                 </div>
                 <br>
@@ -140,6 +140,16 @@
                     </div>
                 </div>
 
+                <br>
+
+                  <div class="container_campo col_10">
+                    <label class="campo_label col_3">Observações</label>
+                    <div class="campo">
+                        <textarea class="form-control" name="observacao" id="observacao" rows="6"
+                            placeholder="Observações sobre a pessoa (opcional)">{{ old('observacao', $pessoa->observacao ?? '') }}</textarea>
+                        <small>Informações adicionais, histórico, etc.</small>
+                    </div>
+                </div>
                 <br>
 
                 <div class="flex_row col_10">

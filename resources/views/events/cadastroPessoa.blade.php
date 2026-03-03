@@ -119,8 +119,18 @@
                             placeholder="Email da Pessoa">
                     </div>
                 </div>
-
                 <br>
+
+                <div class="container_campo col_10">
+                    <label class="campo_label col_3">Observações</label>
+                    <div class="campo">
+                        <textarea class="form-control" name="observacao" id="observacao" rows="6"
+                            placeholder="Observações sobre a pessoa (opcional)">{{ old('observacao', $pessoa->observacao ?? '') }}</textarea>
+                        <small>Informações adicionais, histórico, etc.</small>
+                    </div>
+                </div>
+                <br>
+                
                 <div class="flex_row col_10">
                     <input type="submit" class="card_acao " value="Cadastrar" style="margin-right:5px">
                     <a class="card_acao muted " href="/events/consultaPessoas" style="margin-right:5px">Voltar</a>

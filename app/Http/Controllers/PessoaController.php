@@ -19,7 +19,7 @@ class PessoaController extends Controller
         return view('events.consultaPessoas', ['pessoas' =>  $pessoas]);
     }
 
-    
+
 
     public function cadastrarPessoas()
     {
@@ -61,10 +61,10 @@ class PessoaController extends Controller
 
     public function update(Request $request)
     {
-        
+
 
         $pessoa = Pessoa::findOrFail($request->codigo);
-       
+
         $pessoa->nome = $request->nome;
         $pessoa->cpfcnpj = $request->cpfcnpj;
         $pessoa->endereco =  $request->endereco;
@@ -73,6 +73,7 @@ class PessoaController extends Controller
         $pessoa->estado = $request->estado;
         $pessoa->telefone =  $request->telefone;
         $pessoa->email =  $request->email;
+        $pessoa->observacao =  $request->observacao;
         $pessoa->save();
 
          return redirect('/events/consultaPessoas')->with('msg', 'Cliente alterado com sucesso!');
@@ -95,6 +96,7 @@ class PessoaController extends Controller
         $pessoa->tipo = $request->tipo;
         $pessoa->cidade = $request->cidade;
         $pessoa->email = $request->email;
+        $pessoa->observacao =  $request->observacao;
         $pessoa->save();
         $pessoas = DB::table('pessoas')->orderBy('id', 'asc')->Paginate(REGISTROS_POR_PAGINA);
 
@@ -118,7 +120,7 @@ class PessoaController extends Controller
         return view('events/alterarPessoa', ['pessoa' => $pessoa]);
     }
 
-    
+
     public function visualizarPessoa($id)
     {
         $pessoa =  Pessoa::findOrFail($id);

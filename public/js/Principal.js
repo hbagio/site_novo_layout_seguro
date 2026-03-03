@@ -12,7 +12,6 @@
     this.getElementoHtmlById = (sId) => {
         return document.getElementById(sId);
     }
-
     
 
     /**

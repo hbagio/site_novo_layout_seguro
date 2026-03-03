@@ -6,7 +6,7 @@
             <h1 class="titulo_grande cor_escuro_50">Vendas</h1><br>
             <div class="card flex_col">
                 <div class="flex_row col_12">
-                      <a href="/events/consultaPessoas" class="card_acao  col_2" style="margin-right:5px">Consultar Cliente</a>
+
                     <form class="container flex_row menu_fechado" id="menu_filtro_mobile"
                         action="/events/pesquisaContratoFiltro/" method="GET" enctype="multipart/form-data">
                         @csrf
@@ -28,15 +28,15 @@
                             <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </form>
+                    <a href="/events/consultaPessoas" class="card_acao  col_2" style="margin-right:5px">Consultar Cliente</a>
 
-                    <div class="flex_row col_1"></div>
 
 
 
                 </div>
                 <br>
-                <label style="color: green"> Consulte o Cliente para Incluir uma Nova Venda </label>
-
+                <h3 style="color: rgb(64, 126, 241)"> Consulte o Cliente para Incluir uma Nova Venda </h3>
+                <br>
                 <div class="flex_row col_12">
 
 
@@ -44,25 +44,29 @@
                     <br>
                     <table class="lista_consulta">
                         <tr>
-                            <th>Código Contrato</th>
+
                             <th>Nome Cliente</th>
                             <th>Cpf/Cnpj Cliente</th>
                             <th>Seguradora</th>
                             <th>Data Inicio</th>
                             <th>Data Fim</th>
-                            <th>Valor R$</th>
+                            <th>Valor Liquido R$</th>
+                            <th>Comissão R$</th>
+                            <th>Parceiro a pagar R$</th>
                             <th>Situacao</th>
                             <th>Ações</th>
                         </tr>
                         @foreach ($contratos as $contrato)
                             <tr>
-                                <td> {{ $contrato->id }} </td>
+
                                 <td> {{ $contrato->nome }} </td>
                                 <td> {{ $contrato->cpfcnpj }} </td>
                                 <td> {{ $contrato->seguradora }} </td>
                                 <td> {{ $contrato->datainicio }} </td>
                                 <td> {{ $contrato->datafim }} </td>
-                                <td> {{ $contrato->valor }} </td>
+                                <td> {{ number_format($contrato->valorliquido, 2, ',', '.') }} </td>
+                                <td> {{ number_format($contrato->comissao, 2, ',', '.') }} </td>
+                                <td> {{ number_format($contrato->valorapagarparceiro, 2, ',', '.') }} </td>
                                 @if ($contrato->situacao == 1)
                                     <td>Ativo</td>
                                 @elseif ($contrato->situacao != 1)
@@ -70,11 +74,10 @@
                                 @endif
 
                                 <td>
-
                                     <a class="lista_consulta_acao editar"
                                         href="/events/visualizarContrato/{{ $contrato->id }}" role="button"><i
                                             class="fa-solid fa-magnifying-glass"></i></a>
-                                    <a class="lista_consulta_acao editar" href="/events/alterar/{{ $contrato->id }}"
+                                    <a class="lista_consulta_acao editar" href="/events/alterarContrato/{{ $contrato->id }}"
                                         role="button"> <i class="fa-solid fa-pen"></i></a>
 
                                 </td>
@@ -83,7 +86,7 @@
                     </table>
                 </div>
             </div>
-
+            <br>
             <div class="produto_nome" style="text-align: center">
                 <div class="div_paginacao">
                     <a class="link_paginacao" href="/events/consultaContratos">Primeira</a>

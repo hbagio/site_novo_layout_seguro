@@ -183,7 +183,7 @@ function rotasParceiros()
 function rotasContratos()
 {
     Route::get('/events/incluirContrato/{id}', [ContratoController::class, 'incluirContrato'])->name('gerenciamento.incluir_contrato');
-    Route::post('/events/storeContrato', [ContratoController::class, 'storeContrato'])->name('gerenciamento.incluir_contrato');
+    Route::post('/events/storeContrato/', [ContratoController::class, 'storeContrato'])->name('gerenciamento.incluir_contrato');
     Route::get('/events/consultaContratos', [ContratoController::class, 'consultaContratos'])->name('gerenciamento.consulta_contrato');
     Route::get('/events/visualizarContrato/{id}', [ContratoController::class, 'visualizarContrato'])->name('gerenciamento.visualizar_contrato');
     Route::get('/events/pesquisaContratoFiltro/', [ContratoController::class, 'pesquisaContratoFiltro'])->name('gerenciamento.contrato.pesquisa_contrato_filtro');
