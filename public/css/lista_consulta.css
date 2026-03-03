@@ -11,7 +11,7 @@
 .lista_consulta tr td, .lista_consulta tr th {
     text-align: center;
     border: 2px solid var(--cor_suave_25);
-    padding: .9em;
+    padding: .3em;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -34,10 +34,10 @@
     color: var(--cor_primaria);
     background: rgba(var(--cor_primaria_rgb),.1);
     color: var(--cor_primaria);
-    border-radius: 5px;
+    border-radius: 2px;
     font-weight: bold;
-    padding: 3px 8px;
-    width: 30%;
+    padding: 2px 2px;
+    width: 20%;
 }
 .lista_consulta_acao.editar {
     color: var(--cor_sucesso);

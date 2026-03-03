@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PessoaController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\ParceiroController;
+use App\Http\Controllers\PagamentoController;
 use App\Models\Contrato;
 use GuzzleHttp\Middleware;
 
@@ -93,6 +94,7 @@ function rotasMenuGerenciamento()
     rotasPessoa();
     rotasParceiros();
     rotasContratos();
+    rotasPagamentos();
 }
 
 /**
@@ -188,7 +190,17 @@ function rotasContratos()
     Route::get('/events/visualizarContrato/{id}', [ContratoController::class, 'visualizarContrato'])->name('gerenciamento.visualizar_contrato');
     Route::get('/events/pesquisaContratoFiltro/', [ContratoController::class, 'pesquisaContratoFiltro'])->name('gerenciamento.contrato.pesquisa_contrato_filtro');
     Route::get('/events/alterarContrato/{id}', [ContratoController::class, 'alterarContrato'])->name('gerenciamento.visualizar_contrato');
-    Route::post('/events/updateContrato', [ContratoController::class, 'updateContrato'])->name('gerenciamento.update_contrato');
+    Route::post('/events/updateContrato/', [ContratoController::class, 'updateContrato'])->name('gerenciamento.update_contrato');
+    Route::get('/events/excluirContrato/{id}', [ContratoController::class, 'deleteContrato'])->name('gerenciamento.excluir_contrato');
+    Route::match(['get', 'post'],'/events/desativarContrato/{id}', [ContratoController::class, 'desativarContrato'])->name('gerenciamento.contrato.desativa');
     Route::get('/events/consultaContratosDataFim', [ContratoController::class, 'consultaContratosDataFim'])->name('gerenciamento.consulta_contrato');
 
 }
+
+function rotasPagamentos()
+{
+    Route::get('/events/pagamentosParceiro/{id}', [PagamentoController::class, 'pagamentosParceiro'])->name('gerenciamento.incluir_contrato');
+    Route::post('/events/storePagamento/', [PagamentoController::class, 'storePagamento'])->name('gerenciamento.incluir_contrato');
+    Route::get('/events/excluirPagamento/{id}', [PagamentoController::class, 'deletePagamento'])->name('gerenciamento.excluir_contrato');
+}
+

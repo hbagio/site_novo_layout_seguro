@@ -28,7 +28,8 @@
                             <button type="submit" class="campo_acao"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </form>
-                    <a href="/events/consultaPessoas" class="card_acao  col_2" style="margin-right:5px">Consultar Cliente</a>
+                    <a href="/events/consultaPessoas" class="card_acao  col_2" style="margin-right:5px">Consultar
+                        Cliente</a>
 
 
 
@@ -48,6 +49,7 @@
                             <th>Nome Cliente</th>
                             <th>Cpf/Cnpj Cliente</th>
                             <th>Seguradora</th>
+                            <th>Ramo</th>
                             <th>Data Inicio</th>
                             <th>Data Fim</th>
                             <th>Valor Liquido R$</th>
@@ -62,6 +64,7 @@
                                 <td> {{ $contrato->nome }} </td>
                                 <td> {{ $contrato->cpfcnpj }} </td>
                                 <td> {{ $contrato->seguradora }} </td>
+                                <td> {{ $contrato->ramo }} </td>
                                 <td> {{ $contrato->datainicio }} </td>
                                 <td> {{ $contrato->datafim }} </td>
                                 <td> {{ number_format($contrato->valorliquido, 2, ',', '.') }} </td>
@@ -77,8 +80,20 @@
                                     <a class="lista_consulta_acao editar"
                                         href="/events/visualizarContrato/{{ $contrato->id }}" role="button"><i
                                             class="fa-solid fa-magnifying-glass"></i></a>
-                                    <a class="lista_consulta_acao editar" href="/events/alterarContrato/{{ $contrato->id }}"
-                                        role="button"> <i class="fa-solid fa-pen"></i></a>
+                                    <a class="lista_consulta_acao editar"
+                                        href="/events/alterarContrato/{{$contrato->id }}" role="button"> <i
+                                            class="fa-solid fa-pen"></i></a>
+                                    <a class="lista_consulta_acao  excluir"
+                                        href="/events/desativarContrato/{{$contrato->id }}" role="button"> <i
+                                            class="fa-solid fa-arrows-rotate"></i></a>
+                                    <a class="lista_consulta_acao excluir"
+                                        href="/events/excluirContrato/{{ $contrato->id }}" role="button"> <i
+                                            class="fa-solid fa-trash"></i></a>
+                                     <a class="lista_consulta_acao editar"
+                                        href="/events/pagamentosParceiro/{{$contrato->id }}" role="button"> <i
+                                            class="fa-solid fa-brazilian-real-sign"></i></a>
+
+
 
                                 </td>
                             </tr>

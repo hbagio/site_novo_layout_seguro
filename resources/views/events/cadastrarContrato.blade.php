@@ -129,11 +129,11 @@
                             style="width: 100%;">
                             <option value="">Selecione uma seguradora</option>
                             <option value="AIG">AIG</option>
-                            <option value="Akad">Akad Seguros</option>
+                            <option value="Akad Seguros">Akad Seguros</option>
                             <option value="Allianz">Allianz</option>
-                            <option value="Allseg">Allseg seguros</option>
+                            <option value="Allseg seguros">Allseg seguros</option>
                             <option value="Amil">Amil</option>
-                            <option value="Avla">aVLa</option>
+                            <option value="Avla">Avla</option>
                             <option value="AXA">AXA</option>
                             <option value="AZOS">AZOS</option>
                             <option value="Azul Seguros">Azul Seguros</option>
@@ -142,30 +142,30 @@
                             <option value="CENTAURO">CENTAURO</option>
                             <option value="CHUBB">CHUBB</option>
                             <option value="EZZE">EZZE</option>
-                            <option value="HDI">HDI Seguros</option>
-                            <option value="Icatu">Icatu Seguros</option>
+                            <option value="HDI Seguros">HDI Seguros</option>
+                            <option value="catu Seguros">Icatu Seguros</option>
                             <option value="Itaú Seguros">Itaú Seguros</option>
-                            <option value="Junto">Junto Seguros</option>
-                            <option value="Justos">Justos Seguros</option>
-                            <option value="kovr">kovr seguradora</option>
-                            <option value="MAG">MAG Seguros</option>
-                            <option value="Mapfre">Mapfre Seguros</option>
+                            <option value="Junto Seguros">Junto Seguros</option>
+                            <option value="Justos Seguros">Justos Seguros</option>
+                            <option value="kovr seguradora">kovr seguradora</option>
+                            <option value="MAG Seguros">MAG Seguros</option>
+                            <option value="Mapfre Seguros">Mapfre Seguros</option>
                             <option value="MetLife">MetLife</option>
                             <option value="Mitsui">Mitsui</option>
-                            <option value="Omint">Omint Saúde</option>
+                            <option value="Omint Saúde">Omint Saúde</option>
                             <option value="Porto Seguro">Porto Seguro</option>
                             <option value="Pottencial">Pottencial</option>
                             <option value="Prudential">Prudential</option>
-                            <option value="SOMPO">SOMPO Seguros</option>
-                            <option value="Sancor">Sancor Seguros</option>
+                            <option value="SOMPO Seguro">SOMPO Seguros</option>
+                            <option value="Sancor Seguros">Sancor Seguros</option>
                             <option value="SulAmérica">SulAmérica</option>
                             <option value="Sura">Sura</option>
                             <option value="Swiss Re">Swiss Re</option>
                             <option value="Tokio Marine">Tokio Marine</option>
-                            <option value="Unimed">Seguros Unimed</option>
-                            <option value="Usebens">usebens Seguradora</option>
+                            <option value="Seguros Unimed">Seguros Unimed</option>
+                            <option value="Usebens Seguradora">Usebens Seguradora</option>
                             <option value="Yelum">Yelum</option>
-                            <option value="ZURICH">ZURICH Seguros</option>
+                            <option value="ZURICH Seguros">ZURICH Seguros</option>
                         </select>
                     </div>
 
@@ -184,8 +184,7 @@
                             <option value="Seguro de Responsabilidade Civil">Seguro de Responsabilidade Civil</option>
                             <option value="Seguro Garantia">Seguro Garantia</option>
                             <option value="Seguro Empresarial (Multirrisco)">Seguro Empresarial (Multirrisco)</option>
-                            <option value="Seguro de Equipamentos Portáteis (Celulares)">Seguro de Equipamentos Portáteis
-                                (Celulares)</option>
+                            <option value="Seguro de Equipamentos Portáteis (Celulares)">Seguro de Equipamentos Portáteis (Celulares)</option>
                             <option value="Seguro Viagem">Seguro Viagem</option>
                             <option value="Seguro Pet">Seguro Pet</option>
                             <option value="Seguro Cibernético">Seguro Cibernético</option>
@@ -235,7 +234,7 @@
 
                     <label class="campo_label col_4">Valor da Comissão R$</label>
                     <div class="campo">
-                        <input type="number" step="0.00" min="0.00" class="form-control" name="comissao"
+                        <input type="number"  step="0.01"  class="form-control" name="comissao"
                             id="comissao" required>
                     </div>
                 </div>
