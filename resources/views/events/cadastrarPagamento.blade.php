@@ -193,7 +193,7 @@
 
                             <td> {{ $pagamento->data_pagamento }} </td>
                             <td> {{ number_format($pagamento->valor, 2, ',', '.') }} </td>
-                            <td> {{ $pagamento->situacao }} </td>
+                            <td style="text-transform: capitalize;"> {{ $pagamento->situacao }} </td>
                             <td> <a href="/img/comprovante/{{ $pagamento->comprovante }}" target="_blank">Comprovante</a>
                             </td>
                             <td> {{ $pagamento->observacao }} </td>

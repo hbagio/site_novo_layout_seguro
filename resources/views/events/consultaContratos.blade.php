@@ -1,4 +1,4 @@
-@section('title', 'Fazendo Festa | Vendas')
+@section('title', 'Bagio Seguros | Vendas')
 @extends('layouts.main')
 @section('content')
     <section class="galeria">
@@ -54,7 +54,8 @@
                             <th>Data Fim</th>
                             <th>Valor Liquido R$</th>
                             <th>Comissão R$</th>
-                            <th>Parceiro a pagar R$</th>
+                            <th>Parceiro a Pagar R$</th>
+                            <th>Parceiro Pago R$</th>
                             <th>Situacao</th>
                             <th>Ações</th>
                         </tr>
@@ -70,6 +71,7 @@
                                 <td> {{ number_format($contrato->valorliquido, 2, ',', '.') }} </td>
                                 <td> {{ number_format($contrato->comissao, 2, ',', '.') }} </td>
                                 <td> {{ number_format($contrato->valorapagarparceiro, 2, ',', '.') }} </td>
+                                <td> {{ number_format($contrato->totalPago, 2, ',', '.') }} </td>
                                 @if ($contrato->situacao == 1)
                                     <td>Ativo</td>
                                 @elseif ($contrato->situacao != 1)

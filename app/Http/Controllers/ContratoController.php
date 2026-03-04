@@ -64,16 +64,22 @@ class ContratoController extends Controller
 
     public function consultaContratos()
     {
+        // Criamos a subconsulta para somar os pagamentos
+        $pagamentosSub = DB::table('pagamentos')
+            ->selectRaw('SUM(valor)')
+            ->whereColumn('pagamentos.idcontrato', 'contratos.id')
+            ->where('situacao', '=', 'pago');
 
         $contratos = DB::table('contratos')
             ->select('contratos.*', 'pessoas.nome', 'pessoas.cpfcnpj')
+            // Adicionamos a subconsulta como uma coluna chamada totalPago
+            ->selectSub($pagamentosSub, 'totalPago')
             ->join('pessoas', 'pessoas.id', '=', 'contratos.idpessoa')
             ->orderBy('contratos.id', 'desc')
-            ->Paginate(REGISTROS_POR_PAGINA);
+            ->paginate(REGISTROS_POR_PAGINA);
 
-        return view('events.consultaContratos', ['contratos' =>  $contratos]);
+        return view('events.consultaContratos', ['contratos' => $contratos]);
     }
-
     public function consultaContratosDataFim()
     {
 
@@ -130,20 +136,19 @@ class ContratoController extends Controller
         return back()->with('msg', 'Contrato excluido com sucesso!');
     }
 
-     public function desativarContrato($id)
+    public function desativarContrato($id)
     {
 
         $contrato =  Contrato::findOrFail($id);
-        if($contrato->situacao == 1) {
+        if ($contrato->situacao == 1) {
             $contrato->situacao = 0;
-             $contrato->save();
+            $contrato->save();
             return back()->with('msg', 'Contrato Desativado com sucesso!');
-        }else{
+        } else {
             $contrato->situacao = 1;
             $contrato->save();
             return back()->with('msg', 'Contrato Ativado com sucesso!');
         }
-
     }
 
     public function updateContrato(Request $request)
@@ -188,30 +193,59 @@ class ContratoController extends Controller
 
         if (strlen($filtro_pesquisa) == 0) {
 
+            // Criamos a subconsulta para somar os pagamentos
+            $pagamentosSub = DB::table('pagamentos')
+                ->selectRaw('SUM(valor)')
+                ->whereColumn('pagamentos.idcontrato', 'contratos.id')
+                ->where('situacao', '=', 'pago');
+
             $contratos = DB::table('contratos')
                 ->select('contratos.*', 'pessoas.nome', 'pessoas.cpfcnpj')
+                // Adicionamos a subconsulta como uma coluna chamada totalPago
+                ->selectSub($pagamentosSub, 'totalPago')
                 ->join('pessoas', 'pessoas.id', '=', 'contratos.idpessoa')
                 ->orderBy('contratos.id', 'desc')
-                ->Paginate(REGISTROS_POR_PAGINA);
+                ->paginate(REGISTROS_POR_PAGINA);
+
 
             return view('events.consultaContratos', ['contratos' =>  $contratos]);
         } elseif ($tipoBusca == 0) {
             //busca por nome
+
+            // Criamos a subconsulta para somar os pagamentos
+            $pagamentosSub = DB::table('pagamentos')
+                ->selectRaw('SUM(valor)')
+                ->whereColumn('pagamentos.idcontrato', 'contratos.id')
+                ->where('situacao', '=', 'pago');
+
             $contratos = DB::table('contratos')
                 ->select('contratos.*', 'pessoas.nome', 'pessoas.cpfcnpj')
+                // Adicionamos a subconsulta como uma coluna chamada totalPago
+                ->selectSub($pagamentosSub, 'totalPago')
                 ->join('pessoas', 'pessoas.id', '=', 'contratos.idpessoa')
                 ->where('nome', 'LIKE', ['%' . $filtro_pesquisa . '%'])
-                ->orderBy('id', 'asc')
-                ->Paginate(REGISTROS_POR_PAGINA);
+                ->orderBy('contratos.id', 'desc')
+                ->paginate(REGISTROS_POR_PAGINA);
+
+
             return view('events.consultaContratos', ['contratos' =>  $contratos]);
         } elseif ($tipoBusca == 1) {
             // busca por Cpf
+            // Criamos a subconsulta para somar os pagamentos
+            $pagamentosSub = DB::table('pagamentos')
+                ->selectRaw('SUM(valor)')
+                ->whereColumn('pagamentos.idcontrato', 'contratos.id')
+                ->where('situacao', '=', 'pago');
+
             $contratos = DB::table('contratos')
                 ->select('contratos.*', 'pessoas.nome', 'pessoas.cpfcnpj')
+                // Adicionamos a subconsulta como uma coluna chamada totalPago
+                ->selectSub($pagamentosSub, 'totalPago')
                 ->join('pessoas', 'pessoas.id', '=', 'contratos.idpessoa')
                 ->where('cpfcnpj', 'LIKE', ['%' . $filtro_pesquisa . '%'])
-                ->orderBy('id', 'asc')
-                ->Paginate(REGISTROS_POR_PAGINA);
+                ->orderBy('contratos.id', 'desc')
+                ->paginate(REGISTROS_POR_PAGINA);
+
             return view('events.consultaContratos', ['contratos' =>  $contratos]);
         }
     }
